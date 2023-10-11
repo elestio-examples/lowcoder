@@ -10,9 +10,9 @@ Deploy Lowcoder server with CI/CD on Elestio
 
 # Once deployed ...
 
-You can open Lowcoder UI here:
+To access `Admin Web UI`, first register with the credentials below:
 
-    URL: https://[CI_CD_DOMAIN]
+    URL: https://[CI_CD_DOMAIN]/user/auth/register
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
 
