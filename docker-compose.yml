@@ -19,17 +19,14 @@ services:
       DEFAULT_ORG_GROUP_COUNT: 100
       DEFAULT_ORG_APP_COUNT: 1000
       DEFAULT_DEVELOPER_COUNT: 50
-      #MONGODB_URL: "mongodb://lowcoder:secret123@mongodb/lowcoder?authSource=admin"
       MONGODB_URL: "mongodb://localhost:27017/lowcoder?authSource=admin"
       REDIS_URL: "redis://localhost:6379"
       ENABLE_USER_SIGN_UP: "true"
       ENCRYPTION_PASSWORD: "lowcoder.org"
       ENCRYPTION_SALT: "lowcoder.org"
       CORS_ALLOWED_DOMAINS: "*"
-      # api and node service parameters
       LOWCODER_API_SERVICE_URL: "http://localhost:8080"
       LOWCODER_NODE_SERVICE_URL: "http://localhost:6060"
-      # frontend parameters
       LOWCODER_MAX_REQUEST_SIZE: 20m
       LOWCODER_MAX_QUERY_TIMEOUT: 120
     volumes:
