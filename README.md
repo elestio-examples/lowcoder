@@ -15,3 +15,7 @@ You can open Lowcoder UI here:
     URL: https://[CI_CD_DOMAIN]
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
+
+# Documentation
+
+https://docs.lowcoder.cloud/
