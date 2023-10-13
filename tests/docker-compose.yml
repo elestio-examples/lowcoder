@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  lowcoder-api-service:
+    image: elestio4test/lowcoder:${SOFTWARE_VERSION_TAG}
+    restart: always
+    ports:
+      - "172.17.0.1:18113:3000"
+      - "172.17.0.1:43160:3443"
+    environment:
+      REDIS_ENABLED: "true"
+      MONGODB_ENABLED: "true"
+      API_SERVICE_ENABLED: "true"
+      NODE_SERVICE_ENABLED: "true"
+      FRONTEND_ENABLED: "true"
+      PUID: "1000"
+      PGID: "1000"
+      DEFAULT_ORGS_PER_USER: 100
+      DEFAULT_ORG_MEMBER_COUNT: 1000
+      DEFAULT_ORG_GROUP_COUNT: 100
+      DEFAULT_ORG_APP_COUNT: 1000
+      DEFAULT_DEVELOPER_COUNT: 50
+      MONGODB_URL: "mongodb://172.17.0.1:27017/lowcoder?authSource=admin"
+      REDIS_URL: "redis://172.17.0.1:6379"
+      ENABLE_USER_SIGN_UP: "true"
+      ENCRYPTION_PASSWORD: "lowcoder.org"
+      ENCRYPTION_SALT: "lowcoder.org"
+      CORS_ALLOWED_DOMAINS: "*"
+      LOWCODER_API_SERVICE_URL: "http://172.17.0.1:8080"
+      LOWCODER_NODE_SERVICE_URL: "http://172.17.0.1:6060"
+      LOWCODER_MAX_REQUEST_SIZE: 20m
+      LOWCODER_MAX_QUERY_TIMEOUT: 120
+    volumes:
+      - ./lowcoder-stacks:/lowcoder-stacks
