@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   lowcoder-api-service:
-    image: lowcoderorg/lowcoder-ce:${SOFTWARE_VERSION_TAG}
+    image: elestio/lowcoder:${SOFTWARE_VERSION_TAG}
     restart: always
     ports:
       - "172.17.0.1:18113:3000"
