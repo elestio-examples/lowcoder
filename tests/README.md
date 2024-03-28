@@ -38,7 +38,9 @@ Edit the .env file with your own values.
 
 Run the project with the following command
 
+    ./scripts/preInstall.sh
     docker-compose up -d
+    ./scripts/postInstall.sh
 
 You can access the Web UI at: `http://your-domain:18113`
 
@@ -46,41 +48,57 @@ You can access the Web UI at: `http://your-domain:18113`
 
 Here are some example snippets to help you get started creating a container.
 
-    version: "3.3"
+    version: "3"
     services:
-        lowcoder-api-service:
-            image: elestio4test/lowcoder:${SOFTWARE_VERSION_TAG}
-            restart: always
-            ports:
-                - "172.17.0.1:18113:3000"
-                - "172.17.0.1:43160:3443"
-            environment:
-                REDIS_ENABLED: "true"
-                MONGODB_ENABLED: "true"
-                API_SERVICE_ENABLED: "true"
-                NODE_SERVICE_ENABLED: "true"
-                FRONTEND_ENABLED: "true"
-                PUID: "1000"
-                PGID: "1000"
-                DEFAULT_ORGS_PER_USER: 100
-                DEFAULT_ORG_MEMBER_COUNT: 1000
-                DEFAULT_ORG_GROUP_COUNT: 100
-                DEFAULT_ORG_APP_COUNT: 1000
-                DEFAULT_DEVELOPER_COUNT: 50
-                MONGODB_URL: "mongodb://172.17.0.1:27017/lowcoder?authSource=admin"
-                REDIS_URL: "redis://172.17.0.1:6379"
-                ENABLE_USER_SIGN_UP: "true"
-                ENCRYPTION_PASSWORD: "lowcoder.org"
-                ENCRYPTION_SALT: "lowcoder.org"
-                CORS_ALLOWED_DOMAINS: "*"
-                LOWCODER_API_SERVICE_URL: "http://172.17.0.1:8080"
-                LOWCODER_NODE_SERVICE_URL: "http://172.17.0.1:6060"
-                LOWCODER_MAX_REQUEST_SIZE: 20m
-                LOWCODER_MAX_QUERY_TIMEOUT: 120
-            volumes:
-                - ./lowcoder-stacks:/lowcoder-stacks
+    lowcoder-api-service:
+        image: elestio4test/lowcoder:${SOFTWARE_VERSION_TAG}
+        restart: always
+        ports:
+            - "172.17.0.1:18113:3000"
+            - "172.17.0.1:43160:3443"
+        environment:
+            LOWCODER_REDIS_ENABLED: "true"
+            LOWCODER_MONGODB_ENABLED: "true"
+            LOWCODER_MONGODB_EXPOSED: "false"
+            LOWCODER_API_SERVICE_ENABLED: "true"
+            LOWCODER_NODE_SERVICE_ENABLED: "true"
+            LOWCODER_FRONTEND_ENABLED: "true"
+            LOWCODER_PUID: "1000"
+            LOWCODER_PGID: "1000"
+            LOWCODER_MAX_ORGS_PER_USER: 100
+            LOWCODER_MAX_MEMBERS_PER_ORG: 1000
+            LOWCODER_MAX_GROUPS_PER_ORG: 100
+            LOWCODER_MAX_APPS_PER_ORG: 1000
+            LOWCODER_MAX_DEVELOPERS: 50
+            LOWCODER_MONGODB_URL: "mongodb://localhost:27017/lowcoder?authSource=admin"
+            LOWCODER_REDIS_URL: "redis://localhost:6379"
+            LOWCODER_EMAIL_SIGNUP_ENABLED: "true"
+            LOWCODER_EMAIL_AUTH_ENABLED: "true"
+            LOWCODER_CREATE_WORKSPACE_ON_SIGNUP: "true"
+            LOWCODER_DB_ENCRYPTION_PASSWORD: ${LOWCODER_DB_ENCRYPTION_PASSWORD}
+            LOWCODER_DB_ENCRYPTION_SALT: ${LOWCODER_DB_ENCRYPTION_SALT}
+            LOWCODER_CORS_DOMAINS: "*"
+            LOWCODER_API_KEY_SECRET: ${LOWCODER_API_KEY_SECRET}
+            LOWCODER_API_SERVICE_URL: "http://localhost:8080"
+            LOWCODER_NODE_SERVICE_URL: "http://localhost:6060"
+            LOWCODER_MAX_REQUEST_SIZE: 20m
+            LOWCODER_MAX_QUERY_TIMEOUT: 120
+            LOWCODER_WORKSPACE_MODE: SAAS
+        volumes:
+            - ./lowcoder-stacks:/lowcoder-stacks
+            - ./lowcoder-stacks/assets:/lowcoder/assets
 
+### Environment variables
 
+|            Variable             |                   Value (example)                   |
+| :-----------------------------: | :-------------------------------------------------: |
+|      SOFTWARE_VERSION_TAG       |                       latest                        |
+|         ADMIN_PASSWORD          |                    your-password                    |
+|         ADMIN_USERNAME          |                   test@gmail.com                    |
+|           ADMIN_EMAIL           |                   admin@email.com                   |
+| LOWCODER_DB_ENCRYPTION_PASSWORD |                    your-password                    |
+|   LOWCODER_DB_ENCRYPTION_SALT   |                    your-password                    |
+|     LOWCODER_API_KEY_SECRET     | should be a string of at least 32 random characters |
 
 # Maintenance
 
