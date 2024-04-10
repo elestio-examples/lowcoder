@@ -51,7 +51,7 @@ Here are some example snippets to help you get started creating a container.
     version: "3"
     services:
     lowcoder-api-service:
-        image: elestio4test/lowcoder:${SOFTWARE_VERSION_TAG}
+        image: elestio4test/lowcoder-allinone:${SOFTWARE_VERSION_TAG}
         restart: always
         ports:
             - "172.17.0.1:18113:3000"
