@@ -18,7 +18,7 @@ services:
     container_name: redis
 
   lowcoder-api-service:
-    image: lowcoderorg/lowcoder-api-service:${SOFTWARE_VERSION_TAG}
+    image: lowcoderorg/lowcoder-ce-api-service:${SOFTWARE_VERSION_TAG}
     ports:
       - "172.17.0.1:8080:8080"
     environment:
@@ -47,7 +47,7 @@ services:
       - redis
 
   lowcoder-node-service:
-    image: elestio4test/lowcoder-ce-node-service:${SOFTWARE_VERSION_TAG}
+    image: elestio4test/lowcoder-node-service:${SOFTWARE_VERSION_TAG}
     ports:
       - "172.17.0.1:6060:6060"
     environment:
