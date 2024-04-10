@@ -171,8 +171,8 @@ That's it! With these simple steps, you can easily backup and restore your data 
 
 # Links
 
-- <a target="_blank" href="https://github.com/lowcoder-org/lowcoder">lowcoder Github repository</a>
+- <a target="_blank" href="https://github.com/lowcoder-org/lowcoder">Lowcoder Github repository</a>
 
-- <a target="_blank" href="https://docs.lowcoder.cloud/lowcoder-documentation/">lowcoder documentation</a>
+- <a target="_blank" href="https://docs.lowcoder.cloud/lowcoder-documentation/">Lowcoder documentation</a>
 
-- <a target="_blank" href="https://github.com/elestio-examples/lowcoder">Elestio/parlowcoderse Github repository</a>
+- <a target="_blank" href="https://github.com/elestio-examples/lowcoder">Elestio/Lowcoder Github repository</a>
